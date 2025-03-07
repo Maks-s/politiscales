@@ -36,7 +36,6 @@ const selected = ref({
       <span v-if="modelValue?.emoji" class="size-5 text-center">
         {{ modelValue?.emoji }}
       </span>
-      <UIcon v-else name="i-lucide-earth" :class="ui.leadingIcon()" />
     </template>
     <template #item-leading="{ item }">
       <span v-if="item.emoji" class="size-5 text-center">
