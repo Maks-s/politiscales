@@ -129,19 +129,44 @@ const nextQuestion = (mult: number) => {
     {{ currentQuestion }}
   </h2>
   <div class="flex flex-col gap-4 mt-16 max-w-[256px] m-auto">
-    <UButton color="neutral" size="xl" @click="nextQuestion(1)">
+    <UButton
+      color="strong-agree"
+      size="xl"
+      @click="nextQuestion(1)"
+      class="cursor-pointer"
+    >
       {{ $t('strong_agree') }}
     </UButton>
-    <UButton color="neutral" size="xl" @click="nextQuestion(2 / 3)">
+    <UButton
+      color="agree"
+      size="xl"
+      @click="nextQuestion(2 / 3)"
+      class="cursor-pointer"
+    >
       {{ $t('agree') }}
     </UButton>
-    <UButton color="neutral" size="xl" @click="nextQuestion(0)">
+    <UButton
+      color="unsure"
+      size="xl"
+      @click="nextQuestion(0)"
+      class="cursor-pointer"
+    >
       {{ $t('neutral') }}
     </UButton>
-    <UButton color="neutral" size="xl" @click="nextQuestion(-2 / 3)">
+    <UButton
+      color="disagree"
+      size="xl"
+      @click="nextQuestion(-2 / 3)"
+      class="cursor-pointer"
+    >
       {{ $t('disagree') }}
     </UButton>
-    <UButton color="neutral" size="xl" @click="nextQuestion(-1)">
+    <UButton
+      color="strong-disagree"
+      size="xl"
+      @click="nextQuestion(-1)"
+      class="cursor-pointer"
+    >
       {{ $t('strong_disagree') }}
     </UButton>
 
@@ -163,5 +188,3 @@ const nextQuestion = (mult: number) => {
     </UButton>
   </div>
 </template>
-
-<style></style>

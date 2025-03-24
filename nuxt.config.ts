@@ -23,6 +23,9 @@ export default defineNuxtConfig({
     }
   },
   i18n: {
+    bundle: {
+      optimizeTranslationDirective: false
+    },
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
@@ -78,6 +81,21 @@ export default defineNuxtConfig({
   },
   future: {
     compatibilityVersion: 4
+  },
+
+  ui: {
+    theme: {
+      colors: [
+        'primary',
+        'secondary',
+        'warning',
+        'strong-agree',
+        'agree',
+        'unsure',
+        'disagree',
+        'strong-disagree'
+      ]
+    }
   },
 
   compatibilityDate: '2024-11-27'
