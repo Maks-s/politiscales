@@ -45,6 +45,12 @@ export default defineNuxtConfig({
         emoji: '🇬🇧'
       },
       {
+        code: 'de',
+        file: 'de.json',
+        name: 'Deutsch',
+        emoji: '🇩🇪'
+      },
+      {
         code: 'es',
         file: 'es.json',
         name: 'Español',
