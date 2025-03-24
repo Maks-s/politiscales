@@ -3,13 +3,14 @@ export default defineAppConfig({
     colors: {
       primary: 'emerald',
       neutral: 'slate',
-      'strong-agree': 'emerald',
+      strong_agree: 'emerald',
       agree: 'lime',
       unsure: 'gray',
       disagree: 'orange',
-      'strong-disagree': 'red'
+      strong_disagree: 'red'
     },
     icons: {
+      // @ts-expect-error
       light: 'i-line-md-sunny-loop',
       dark: 'i-line-md-moon-loop'
     }

@@ -130,7 +130,7 @@ const nextQuestion = (mult: number) => {
   </h2>
   <div class="flex flex-col gap-4 mt-16 max-w-[256px] m-auto">
     <UButton
-      color="strong-agree"
+      color="strong_agree"
       size="xl"
       @click="nextQuestion(1)"
       class="cursor-pointer"
@@ -162,7 +162,7 @@ const nextQuestion = (mult: number) => {
       {{ $t('disagree') }}
     </UButton>
     <UButton
-      color="strong-disagree"
+      color="strong_disagree"
       size="xl"
       @click="nextQuestion(-1)"
       class="cursor-pointer"

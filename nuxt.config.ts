@@ -94,12 +94,13 @@ export default defineNuxtConfig({
       colors: [
         'primary',
         'secondary',
+        'error',
         'warning',
-        'strong-agree',
+        'strong_agree',
         'agree',
         'unsure',
         'disagree',
-        'strong-disagree'
+        'strong_disagree'
       ]
     }
   },
