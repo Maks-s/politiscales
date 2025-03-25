@@ -162,6 +162,8 @@
 </template>
 
 <script setup lang="ts">
+import { axes, badgeThreshold, charSlogan } from '~/utils/legacy/axes'
+
 const { t } = useI18n()
 const props = defineProps<{
   axes: AxisValues

@@ -1,3 +1,5 @@
+import { axes, axesKeys } from '~/utils/legacy/axes'
+
 interface CompressedData {
   axis: number
   score: number | null
@@ -85,7 +87,6 @@ export const useSerializer = () => {
   const decodeResultsStr = (str: string): AxisValues | null => {
     try {
       const axisValues: AxisValues = {}
-      const axesKeys = Object.keys(axes)
       if (!str || str.length % 2 !== 0) return null
       for (let i = 0; i < str.length; i += 2) {
         const axisValue = decodeAxis(str.slice(i, i + 2))

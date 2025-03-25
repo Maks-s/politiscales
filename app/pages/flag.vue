@@ -15,6 +15,8 @@
 </template>
 
 <script lang="ts" setup>
+import { pairedAxesByPair, unpairedAxesKeys } from '~/utils/legacy/axes'
+
 const initUserAxes = pairedAxesByPair.reduce<AxisValues>((acc, pair) => {
   acc[pair.left] = 0.3
   acc[pair.right] = 0.3

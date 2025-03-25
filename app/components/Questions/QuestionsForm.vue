@@ -1,10 +1,15 @@
 <script lang="ts" setup>
+import { axes, axesKeys } from '~/utils/legacy/axes'
+
 const { t } = useI18n()
 const { encodeResultsStr } = useSerializer()
 const questionsState = useQuestionsState()
 const localePath = useLocalePath()
 
-const axesKeys = Object.keys(axes)
+const props = defineProps<{
+  questionsWeights: QuestionWeights
+  resultName: string
+}>()
 
 const currentQuestion = computed(() =>
   t(
@@ -16,7 +21,7 @@ const currentQuestionId = computed(() => {
 })
 
 const questionsIds = computed(() => {
-  return Object.keys(questionsWeights)
+  return Object.keys(props.questionsWeights)
 })
 
 interface Score {
@@ -37,12 +42,12 @@ const quizResults = computed<AxisValues>(() => {
   Object.entries(questionsState.value.answers).forEach(
     ([questionId, answerValue]) => {
       if (answerValue > 0) {
-        questionsWeights[questionId]?.valuesYes.forEach((a) => {
+        props.questionsWeights[questionId]?.valuesYes.forEach((a) => {
           ;(scores[a.axis] as Score).val += answerValue * a.value
           ;(scores[a.axis] as Score).sum += Math.max(a.value, 0)
         })
       } else {
-        questionsWeights[questionId]?.valuesNo.forEach((a) => {
+        props.questionsWeights[questionId]?.valuesNo.forEach((a) => {
           ;(scores[a.axis] as Score).val -= answerValue * a.value
           ;(scores[a.axis] as Score).sum += Math.max(a.value, 0)
         })
@@ -99,7 +104,7 @@ const nextQuestion = (mult: number) => {
   ) {
     navigateTo(
       localePath({
-        name: 'results',
+        name: props.resultName,
         hash: `#${encodeResultsStr(quizResults.value)}`
       })
     )

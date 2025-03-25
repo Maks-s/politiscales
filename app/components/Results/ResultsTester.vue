@@ -67,6 +67,14 @@
 </template>
 
 <script lang="ts" setup>
+import {
+  pairedAxes,
+  pairedAxesByPair,
+  unpairedAxes,
+  unpairedAxesKeys,
+  type PairedAxisByPair
+} from '~/utils/legacy/axes'
+
 const forceFlagShapeIndex = defineModel<number>('forceFlagShapeIndex', {
   required: true
 })

@@ -9,6 +9,8 @@
 </template>
 
 <script lang="ts" setup>
+import type { PairedAxesKey, UnpairedAxesKey } from '~/utils/legacy/axes'
+
 const userAxes = defineModel<AxisValues>({ required: true })
 
 function setSample(sampleValues: AxisValues) {
@@ -34,10 +36,6 @@ const values = {
     revolution: 0.83,
     reform: 0.5,
 
-    materialism: 0,
-    idealism: 0,
-    sustainability: 0,
-    growth_at_all_costs: 0,
     anarchism: 0,
     pragmatism: 0,
     feminism: 0,
@@ -65,10 +63,6 @@ const values = {
     revolution: 0.55,
     reform: 0.21,
 
-    materialism: 0,
-    idealism: 0,
-    sustainability: 0,
-    growth_at_all_costs: 0,
     anarchism: 1,
     pragmatism: 1,
     feminism: 1,
@@ -96,10 +90,6 @@ const values = {
     revolution: 0.71,
     reform: 0.29,
 
-    materialism: 0,
-    idealism: 0,
-    sustainability: 0,
-    growth_at_all_costs: 0,
     anarchism: 1,
     pragmatism: 1,
     feminism: 0,
@@ -127,10 +117,6 @@ const values = {
     revolution: 0.19,
     reform: 0.33,
 
-    materialism: 0,
-    idealism: 0,
-    sustainability: 0,
-    growth_at_all_costs: 0,
     anarchism: 0,
     pragmatism: 0,
     feminism: 0,
