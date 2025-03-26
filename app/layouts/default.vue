@@ -1,16 +1,6 @@
 <template>
-  <div>
-    <Header />
-    <UPage>
-      <template #left>
-        <UPageAside> </UPageAside>
-      </template>
-      <UPageBody>
-        <slot />
-      </UPageBody>
-      <template #right>
-        <UPageAside> </UPageAside>
-      </template>
-    </UPage>
-  </div>
+  <Header />
+  <UContainer class="pt-8">
+    <slot />
+  </UContainer>
 </template>
