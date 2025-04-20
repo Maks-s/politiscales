@@ -1,5 +1,5 @@
 <template>
-  <QuestionsForm :questions-weights="questionsWeights" result-name="results" />
+  <QuestionsForm :questions-weights="questionsWeights" />
 </template>
 
 <script lang="ts" setup>

@@ -5,11 +5,10 @@ const { t } = useI18n()
 const { encodeResultsStr } = useSerializer()
 const questionsState = useQuestionsState()
 const localePath = useLocalePath()
+const route = useRoute()
 
-const props = defineProps<{
-  questionsWeights: QuestionWeights
-  resultName: string
-}>()
+const isLegacy = route.path.includes('/legacy')
+const props = defineProps<{ questionsWeights: QuestionWeights }>()
 
 const currentQuestion = computed(() =>
   t(
@@ -104,7 +103,7 @@ const nextQuestion = (mult: number) => {
   ) {
     navigateTo(
       localePath({
-        name: props.resultName,
+        name: isLegacy ? 'legacy-results' : 'results',
         hash: `#${encodeResultsStr(quizResults.value)}`
       })
     )
@@ -187,7 +186,7 @@ const nextQuestion = (mult: number) => {
       v-if="questionsState.currentQuestionIndex === 0"
       color="neutral"
       size="xl"
-      to="/"
+      :to="isLegacy ? localePath('/legacy') : localePath('/')"
     >
       {{ $t('back_home') }}
     </UButton>

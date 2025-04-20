@@ -1,8 +1,5 @@
 <template>
-  <QuestionsForm
-    :questions-weights="questionsWeights"
-    result-name="legacy-results"
-  />
+  <QuestionsForm :questions-weights="questionsWeights" />
 </template>
 
 <script lang="ts" setup>
