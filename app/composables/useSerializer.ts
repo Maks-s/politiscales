@@ -68,7 +68,7 @@ export const useSerializer = () => {
 
     return {
       axis,
-      score: rawscore === NaN_VALUE ? null : rawscore
+      score: rawscore === NaN_VALUE ? null : rawscore / 100
     }
   }
 
