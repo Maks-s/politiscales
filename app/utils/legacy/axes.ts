@@ -167,3 +167,11 @@ export const badgeThreshold = {
   religion: 0.5,
   monarchism: 0.5
 }
+
+export const legacyAxisToAxis = (name: string) => {
+  const axis = Object.keys(axes).find(
+    (axis) => axes[axis as keyof typeof axes].legacyKey === name
+  )
+  if (!axis) return null
+  return axis
+}
