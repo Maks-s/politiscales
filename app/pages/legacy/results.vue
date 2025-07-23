@@ -1,3 +1,3 @@
 <template>
-  <ResultsLegacyResultsImage />
+  <LegacyResultsImage />
 </template>
