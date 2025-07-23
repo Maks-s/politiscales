@@ -1,5 +1,5 @@
 <template>
-  <h2 v-text="$t('results')" class="text-2xl font-bold text-center" />
+  <h2 class="text-2xl font-bold text-center" v-text="$t('results')" />
 
   <i18n-t
     keypath="results_desc"
@@ -30,32 +30,32 @@
 
   <div class="flex flex-wrap justify-center gap-4 my-4">
     <button
+      id="buttonLink"
       class="flex items-center gap-2 px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition-colors cursor-pointer"
       @click="copyLinkToClipboard"
-      id="buttonLink"
     >
       <Icon name="line-md:link" class="text-2xl" />
       <span v-text="$t('copy_link')" />
     </button>
 
     <button
+      id="buttonImage"
       class="flex items-center gap-2 px-4 py-2 text-white bg-blue-600 rounded hover:bg-blue-700 transition-colors cursor-pointer"
       @click="download_image()"
-      id="buttonImage"
     >
       <Icon name="line-md:download" class="text-2xl" />
       <span v-text="$t('download')" />
     </button>
 
-    <template v-for="social in socialButtons" :key="index">
+    <template v-for="social in socialButtons" :key="social.id">
       <a
+        :id="social.id"
         :href="social.href"
         :class="[
           'flex items-center gap-2 px-4 py-2 text-white rounded transition-colors cursor-pointer',
           social.bgClass,
           social.hoverClass
         ]"
-        :id="social.id"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -78,7 +78,7 @@
   </div>
 
   <div id="bonusBox" class="max-w-4xl mx-auto mt-12 space-y-6">
-    <h3 v-text="$t('bonus_chars')" class="text-2xl font-bold" />
+    <h3 class="text-2xl font-bold" v-text="$t('bonus_chars')" />
 
     <div id="anarBonus" class="flex items-start gap-4 p-4">
       <div class="flex-shrink-0 w-32 h-32 p-1">
@@ -383,7 +383,7 @@ function init_results() {
     const selectedSlogan = []
 
     for (const charac of characteristics) {
-      if (charac.value > 0 && charSlogan.hasOwnProperty(charac.name)) {
+      if (charac.value > 0 && Object.hasOwn(charSlogan, charac.name)) {
         selectedSlogan.push({
           text: charSlogan[charac.name],
           value: charac.value
@@ -516,7 +516,7 @@ function init_results() {
     for (let i = 0; i < flagShapes.length; i++) {
       if (flagShapes[i].numColors > numColors) continue
 
-      const condValue = [0, 0]
+      let condValue = [0, 0]
       let accepted = 1
       const conds = Object.keys(flagShapes[i].cond)
       if (conds.length > 0) {
@@ -553,7 +553,7 @@ function init_results() {
           if (!accepted) break
         }
       } else {
-        const condValue = [0, 0]
+        condValue = [0, 0]
       }
 
       if (accepted && flagColor <= flagShapes[i].numColors) {
@@ -789,12 +789,6 @@ function init_results() {
         tmpC.width = images['sprites'].width
         tmpC.height = images['sprites'].height
         const tmpCtx = tmpC.getContext('2d')
-        const coloredSprites = tmpCtx.getImageData(
-          0,
-          0,
-          tmpC.width,
-          tmpC.height
-        )
 
         tmpCtx.beginPath()
         tmpCtx.rect(0, 0, tmpC.width, tmpC.height)
@@ -868,7 +862,6 @@ function init_results() {
       let yPos = 20
 
       if (flag) {
-        const flagCtx = flag.getContext('2d')
         const flagSize = 160
 
         //Logo
@@ -1117,37 +1110,6 @@ function download_image() {
   document.body.appendChild(link)
   link.click()
   document.body.removeChild(link)
-}
-
-function shareLink() {
-  const urlToCopy = document.getElementById('urlToCopy')
-  const urlToCopyContainer = document.getElementById('urlToCopyContainer')
-
-  try {
-    if (document.body.createTextRange) {
-      // for Internet Explorer
-      const range = document.body.createTextRange()
-      range.moveToElementText(urlToCopy)
-      range.select()
-      document.execCommand('Copy')
-    } else if (window.getSelection) {
-      // other browsers
-      const selection = window.getSelection()
-      const range = document.createRange()
-      range.selectNodeContents(urlToCopy)
-      selection.removeAllRanges()
-      selection.addRange(range)
-      document.execCommand('Copy')
-    }
-    const button = document.getElementById('buttonLink')
-    if (button) {
-      button.className = 'button buttonLinkGood'
-      setTimeout(() => {
-        const buttonTimeout = document.getElementById('buttonLink')
-        if (buttonTimeout) button.className = 'button buttonLink'
-      }, 2000)
-    }
-  } catch (err) {}
 }
 
 if (typeof window !== 'undefined') {

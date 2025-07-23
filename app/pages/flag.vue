@@ -3,8 +3,8 @@
     <ResultsFlag
       :axes="userAxes"
       :force-flag-shape="forcedFlagShapeIndex"
-      @click="randomizeAxes"
       class="cursor-pointer"
+      @click="randomizeAxes"
     />
     <ResultsTester
       v-model:user-axes="userAxes"

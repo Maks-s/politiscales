@@ -162,6 +162,7 @@
 </template>
 
 <script setup lang="ts">
+// eslint-disable-next-line vue/no-dupe-keys
 import { axes, badgeThreshold, charSlogan } from '~/utils/legacy/axes'
 
 const { t } = useI18n()

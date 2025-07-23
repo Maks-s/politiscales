@@ -10,7 +10,7 @@ const props = withDefaults(
     width?: number
     axes: AxisValues
   }>(),
-  { height: 256, width: 512 }
+  { forceFlagShape: undefined, height: 256, width: 512 }
 )
 
 const flagCanvas = ref<HTMLCanvasElement | null>(null)

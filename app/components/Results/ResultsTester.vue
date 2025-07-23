@@ -2,7 +2,7 @@
   <div v-if="userAxes" class="w-2xl">
     <div class="grid grid-cols-2 gap-2">
       <div
-        v-for="(row, index) in rows"
+        v-for="row in rows"
         :key="row.name"
         :class="{ 'col-span-2': row.type === 'paired' }"
       >
@@ -16,8 +16,7 @@
           <USlider
             :id="row.name"
             class="paired-slider"
-            :modelValue="[userAxes[row.left]!, 1 - userAxes[row.right]!]"
-            @update:modelValue="(v) => setAxesValue(row, v)"
+            :model-value="[userAxes[row.left]!, 1 - userAxes[row.right]!]"
             :min="0"
             :max="1"
             :step="0.01"
@@ -26,6 +25,7 @@
               '--min-color': pairedAxes[row.left].color,
               '--max-color': pairedAxes[row.right].color
             }"
+            @update:model-value="(v) => setAxesValue(row, v)"
           />
         </UFormField>
 

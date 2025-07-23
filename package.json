@@ -26,10 +26,11 @@
     "@types/eslint-config-prettier": "^6.11.3",
     "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-vue": "^10.3.0",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.11",
     "typescript": "~5.7.3",
-    "vue-tsc": "2.2.2"
+    "vue-tsc": "^2.2.12"
   },
   "packageManager": "pnpm@10.6.5+sha512.cdf928fca20832cd59ec53826492b7dc25dc524d4370b6b4adbf65803d32efaa6c1c88147c0ae4e8d579a6c9eec715757b50d4fa35eea179d868eada4ed043af",
   "pnpm": {

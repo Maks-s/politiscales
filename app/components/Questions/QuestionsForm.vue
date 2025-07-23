@@ -136,40 +136,40 @@ const nextQuestion = (mult: number) => {
     <UButton
       color="strong_agree"
       size="xl"
-      @click="nextQuestion(1)"
       class="cursor-pointer"
+      @click="nextQuestion(1)"
     >
       {{ $t('strong_agree') }}
     </UButton>
     <UButton
       color="agree"
       size="xl"
-      @click="nextQuestion(2 / 3)"
       class="cursor-pointer"
+      @click="nextQuestion(2 / 3)"
     >
       {{ $t('agree') }}
     </UButton>
     <UButton
       color="unsure"
       size="xl"
-      @click="nextQuestion(0)"
       class="cursor-pointer"
+      @click="nextQuestion(0)"
     >
       {{ $t('neutral') }}
     </UButton>
     <UButton
       color="disagree"
       size="xl"
-      @click="nextQuestion(-2 / 3)"
       class="cursor-pointer"
+      @click="nextQuestion(-2 / 3)"
     >
       {{ $t('disagree') }}
     </UButton>
     <UButton
       color="strong_disagree"
       size="xl"
-      @click="nextQuestion(-1)"
       class="cursor-pointer"
+      @click="nextQuestion(-1)"
     >
       {{ $t('strong_disagree') }}
     </UButton>

@@ -2,6 +2,7 @@
   <div>
     <UButton
       v-for="(value, key) in values"
+      :key="key"
       :label="key"
       @click="setSample(value)"
     />

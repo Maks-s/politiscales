@@ -35,7 +35,7 @@ const selected = ref({
     :search-input="false"
     @update:model-value="onSelectLanguage"
   >
-    <template #leading="{ modelValue, ui }">
+    <template #leading="{ modelValue }">
       <span v-if="modelValue?.emoji" class="size-5 text-center">
         {{ modelValue?.emoji }}
       </span>

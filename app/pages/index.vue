@@ -2,7 +2,7 @@
   <div class="container mx-auto max-w-[50rem]">
     <img src="/images/politiscales_cover.png" class="h-64 m-auto mt-5" />
 
-    <p v-html="$t('description')" class="my-5" />
+    <p class="my-5" v-text="$t('description')" />
 
     <UAlert
       v-for="alert in alerts"

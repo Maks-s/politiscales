@@ -1,20 +1,20 @@
 <template>
   <div class="px-12 sm:px-32">
     <div class="w-full mx-auto max-w-[50rem]">
-      <h1 v-text="$t('whoarewe')" class="text-2xl font-bold pb-3" />
+      <h1 class="text-2xl font-bold pb-3" v-text="$t('whoarewe')" />
 
-      <p v-text="$t('long_desc')" class="block pb-8" />
+      <p class="block pb-8" v-text="$t('long_desc')" />
 
-      <div v-for="(axis, index) in axes" class="pb-8">
+      <div v-for="(axis, index) in axes" :key="index" class="pb-8">
         <h1
-          v-text="$t(`axis_${index + 1}_title`)"
           class="text-2xl font-bold pb-3"
+          v-text="$t(`axis_${index + 1}_title`)"
         />
         <div class="flex relative">
           <img :src="`/images/${axis.left}.png`" class="axis-logo" />
           <div
-            v-html="$t(`axis_${index + 1}_desc`)"
             class="whitespace-pre-line"
+            v-text="$t(`axis_${index + 1}_desc`)"
           />
           <img :src="`/images/${axis.right}.png`" class="axis-logo" />
         </div>
