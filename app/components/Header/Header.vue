@@ -1,12 +1,3 @@
-<script setup lang="ts">
-const localePath = useLocalePath()
-const route = useRoute()
-
-const rootLink = computed(() =>
-  route.path.includes('/legacy') ? localePath('/legacy') : localePath('/')
-)
-</script>
-
 <template>
   <UHeader :to="rootLink">
     <template #title>
@@ -19,3 +10,12 @@ const rootLink = computed(() =>
     </template>
   </UHeader>
 </template>
+
+<script setup lang="ts">
+const localePath = useLocalePath()
+const route = useRoute()
+
+const rootLink = computed(() =>
+  route.path.includes('/legacy') ? localePath('/legacy') : localePath('/')
+)
+</script>

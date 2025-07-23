@@ -16,7 +16,13 @@ export default withNuxt(
         }
       ],
       'vue/multi-word-component-names': 'off',
-      'no-console': 'off'
+      'no-console': 'off',
+      'vue/block-order': [
+        'error',
+        {
+          order: ['template', 'script', 'style']
+        }
+      ]
     }
   },
   eslintConfigPrettier
