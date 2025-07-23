@@ -23,9 +23,6 @@ export default defineNuxtConfig({
     }
   },
   i18n: {
-    bundle: {
-      optimizeTranslationDirective: false
-    },
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: 'i18n_redirected',
@@ -81,7 +78,6 @@ export default defineNuxtConfig({
         emoji: '🇸🇦'
       }
     ],
-    lazy: true,
     defaultLocale: 'en',
     vueI18n: '~/i18n.config.ts'
   },
@@ -102,6 +98,19 @@ export default defineNuxtConfig({
         'disagree',
         'strong_disagree'
       ]
+    }
+  },
+
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        strict: true
+      }
+    },
+    nodeTsConfig: {
+      compilerOptions: {
+        strict: true
+      }
     }
   },
 

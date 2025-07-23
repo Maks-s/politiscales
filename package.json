@@ -15,22 +15,22 @@
   "dependencies": {
     "@nuxt/ui": "^3.2.0",
     "@nuxt/ui-pro": "^3.2.0",
-    "@nuxtjs/i18n": "^9.5.6",
-    "nuxt": "^3.17.7"
+    "@nuxtjs/i18n": "^10.0.2",
+    "nuxt": "^4.0.1"
   },
   "devDependencies": {
     "@iconify-json/line-md": "^1.2.8",
     "@nuxt/devtools": "^2.6.2",
-    "@nuxt/eslint": "^1.6.0",
-    "@nuxt/fonts": "0.11.0",
+    "@nuxt/eslint": "^1.7.0",
+    "@nuxt/fonts": "0.11.4",
     "@types/eslint-config-prettier": "^6.11.3",
     "eslint": "^9.31.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-vue": "^10.3.0",
     "prettier": "^3.6.2",
     "tailwindcss": "^4.1.11",
-    "typescript": "~5.7.3",
-    "vue-tsc": "^2.2.12"
+    "typescript": "~5.8.3",
+    "vue-tsc": "^3.0.3"
   },
   "packageManager": "pnpm@10.6.5+sha512.cdf928fca20832cd59ec53826492b7dc25dc524d4370b6b4adbf65803d32efaa6c1c88147c0ae4e8d579a6c9eec715757b50d4fa35eea179d868eada4ed043af",
   "pnpm": {

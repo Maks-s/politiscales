@@ -25,7 +25,7 @@
               '--min-color': pairedAxes[row.left].color,
               '--max-color': pairedAxes[row.right].color
             }"
-            @update:model-value="(v) => setAxesValue(row, v)"
+            @update:model-value="(v: [number, number]) => setAxesValue(row, v)"
           />
         </UFormField>
 
