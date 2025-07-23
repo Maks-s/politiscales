@@ -221,7 +221,7 @@ function getResultsUrl() {
   }
 }
 
-const socialText = encodeURIComponent(t('share_text'))
+const socialText = encodeURIComponent(t('share_desc'))
 const socialUrl = encodeURIComponent(getResultsUrl())
 
 // Social share buttons configuration
@@ -1157,58 +1157,6 @@ if (typeof window !== 'undefined') {
 </script>
 
 <style scoped>
-.axisConstructivism {
-  background-color: #a425b6;
-}
-.axisEssentialism {
-  background-color: #34b634;
-}
-.axisInternationalism {
-  background-color: #3e6ffd;
-}
-.axisNationalism {
-  background-color: #ff8500;
-}
-.axisCommunism {
-  background-color: #cc0000;
-}
-.axisCapitalism {
-  background-color: #ffb800;
-}
-.axisProgressism {
-  background-color: #850083;
-}
-.axisConservatism {
-  background-color: #970000;
-}
-.axisEcology {
-  background-color: #a0e90d;
-}
-.axisProductivism {
-  background-color: #4deae9;
-}
-.axisLiberal {
-  background-color: #14bee1;
-}
-.axisAuthoritarism {
-  background-color: #e6cc27;
-}
-.axisRegulation {
-  background-color: #269b32;
-}
-.axisLaissez {
-  background-color: #6608c0;
-}
-.axisRevo {
-  background-color: #eb1a66;
-}
-.axisRefo {
-  background-color: #0ee4c8;
-}
-.axisNeutral {
-  background-color: #f3f3f3;
-}
-
 /* Button states for the share link button */
 .buttonLinkGood {
   background-color: #0eb31a !important;
