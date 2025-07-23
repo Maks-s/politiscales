@@ -1546,10 +1546,6 @@ export const flagColors: FlagColor[] = [
       communism: {
         vmin: 0,
         vmax: 0.6
-      },
-      capitalist: {
-        vmin: 0.05,
-        vmax: 0.4
       }
     }
   },

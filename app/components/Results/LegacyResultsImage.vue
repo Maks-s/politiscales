@@ -47,7 +47,7 @@
       <span v-text="$t('download')" />
     </button>
 
-    <template v-for="(social, index) in socialButtons" :key="index">
+    <template v-for="social in socialButtons" :key="index">
       <a
         :href="social.href"
         :class="[
@@ -77,345 +77,11 @@
     <div id="slogan" class="mt-4 text-3xl font-bold"></div>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-    <div class="space-y-6">
-      <div class="flex items-center gap-4 p-4">
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/constructivism.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="flex-1">
-          <div class="flex justify-between mb-2 text-sm font-medium">
-            <div class="left-label text-left" v-text="$t('constructivism')" />
-            <div class="right-label text-right" v-text="$t('essentialism')" />
-          </div>
-          <div class="flex h-8 bg-gray-200 rounded overflow-hidden">
-            <div
-              id="cAxisNeg"
-              class="axisConstructivism h-full flex items-center justify-end text-white font-medium text-sm"
-            >
-              <span id="cAxisNegText" class="mx-2"></span>
-            </div>
-            <div
-              id="cAxisMid"
-              class="axisNeutral h-full flex items-center justify-center text-gray-700 font-medium text-sm"
-            >
-              <span id="cAxisMidText"></span>
-            </div>
-            <div
-              id="cAxisPos"
-              class="axisEssentialism h-full flex items-center justify-start text-white font-medium text-sm"
-            >
-              <span id="cAxisPosText"></span>
-            </div>
-          </div>
-        </div>
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/essentialism.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-      </div>
-
-      <div class="flex items-center gap-4 p-4">
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/rehabilitative_justice.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="flex-1">
-          <div class="flex justify-between mb-2 text-sm font-medium">
-            <div
-              class="left-label text-left"
-              v-text="$t('rehabilitative_justice')"
-            />
-            <div
-              class="right-label text-right"
-              v-text="$t('punitive_justice')"
-            />
-          </div>
-          <div class="flex h-8 bg-gray-200 rounded overflow-hidden">
-            <div
-              id="jAxisNeg"
-              class="axisLiberal h-full flex items-center justify-start text-white font-medium text-sm"
-            >
-              <span id="jAxisNegText"></span>
-            </div>
-            <div
-              id="jAxisMid"
-              class="axisNeutral h-full flex items-center justify-center text-gray-700 font-medium text-sm"
-            >
-              <span id="jAxisMidText"></span>
-            </div>
-            <div
-              id="jAxisPos"
-              class="axisAuthoritarism h-full flex items-center justify-end text-white font-medium text-sm"
-            >
-              <span id="jAxisPosText"></span>
-            </div>
-          </div>
-        </div>
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/punitive_justice.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-      </div>
-
-      <div class="flex items-center gap-4 p-4">
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/progressive.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="flex-1">
-          <div class="flex justify-between mb-2 text-sm font-medium">
-            <div class="left-label text-left" v-text="$t('progressive')" />
-            <div class="right-label text-right" v-text="$t('conservative')" />
-          </div>
-          <div class="flex h-8 bg-gray-200 rounded overflow-hidden">
-            <div
-              id="sAxisNeg"
-              class="axisProgressism h-full flex items-center justify-start text-white font-medium text-sm"
-            >
-              <span id="sAxisNegText"></span>
-            </div>
-            <div
-              id="sAxisMid"
-              class="axisNeutral h-full flex items-center justify-center text-gray-700 font-medium text-sm"
-            >
-              <span id="sAxisMidText"></span>
-            </div>
-            <div
-              id="sAxisPos"
-              class="axisConservatism h-full flex items-center justify-end text-white font-medium text-sm"
-            >
-              <span id="sAxisPosText"></span>
-            </div>
-          </div>
-        </div>
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/conservative.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-      </div>
-
-      <div class="flex items-center gap-4 p-4">
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/internationalism.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="flex-1">
-          <div class="flex justify-between mb-2 text-sm font-medium">
-            <div class="left-label text-left" v-text="$t('internationalism')" />
-            <div class="right-label text-right" v-text="$t('nationalism')" />
-          </div>
-          <div class="flex h-8 bg-gray-200 rounded overflow-hidden">
-            <div
-              id="bAxisNeg"
-              class="axisInternationalism h-full flex items-center justify-start text-white font-medium text-sm"
-            >
-              <span id="bAxisNegText"></span>
-            </div>
-            <div
-              id="bAxisMid"
-              class="axisNeutral h-full flex items-center justify-center text-gray-700 font-medium text-sm"
-            >
-              <span id="bAxisMidText"></span>
-            </div>
-            <div
-              id="bAxisPos"
-              class="axisNationalism h-full flex items-center justify-end text-white font-medium text-sm"
-            >
-              <span id="bAxisPosText"></span>
-            </div>
-          </div>
-        </div>
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/nationalism.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-      </div>
-    </div>
-
-    <div class="space-y-6">
-      <div class="flex items-center gap-4 p-4">
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/communism.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="flex-1">
-          <div class="flex justify-between mb-2 text-sm font-medium">
-            <div class="left-label text-left" v-text="$t('communism')" />
-            <div class="right-label text-right" v-text="$t('capitalism')" />
-          </div>
-          <div class="flex h-8 bg-gray-200 rounded overflow-hidden">
-            <div
-              id="pAxisNeg"
-              class="axisCommunism h-full flex items-center justify-start text-white font-medium text-sm"
-            >
-              <span id="pAxisNegText"></span>
-            </div>
-            <div
-              id="pAxisMid"
-              class="axisNeutral h-full flex items-center justify-center text-gray-700 font-medium text-sm"
-            >
-              <span id="pAxisMidText"></span>
-            </div>
-            <div
-              id="pAxisPos"
-              class="axisCapitalism h-full flex items-center justify-end text-white font-medium text-sm"
-            >
-              <span id="pAxisPosText"></span>
-            </div>
-          </div>
-        </div>
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/capitalism.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-      </div>
-
-      <div class="flex items-center gap-4 p-4">
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/regulation.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="flex-1">
-          <div class="flex justify-between mb-2 text-sm font-medium">
-            <div class="left-label text-left" v-text="$t('regulation')" />
-            <div class="right-label text-right" v-text="$t('laissez_faire')" />
-          </div>
-          <div class="flex h-8 bg-gray-200 rounded overflow-hidden">
-            <div
-              id="mAxisNeg"
-              class="axisRegulation h-full flex items-center justify-start text-white font-medium text-sm"
-            >
-              <span id="mAxisNegText"></span>
-            </div>
-            <div
-              id="mAxisMid"
-              class="axisNeutral h-full flex items-center justify-center text-gray-700 font-medium text-sm"
-            >
-              <span id="mAxisMidText"></span>
-            </div>
-            <div
-              id="mAxisPos"
-              class="axisLaissez h-full flex items-center justify-end text-white font-medium text-sm"
-            >
-              <span id="mAxisPosText"></span>
-            </div>
-          </div>
-        </div>
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/laissez_faire.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-      </div>
-
-      <div class="flex items-center gap-4 p-4">
-        <div class="w-16 h-16 flex-shrink-0">
-          <img src="/images/ecology.png" class="w-full h-full object-contain" />
-        </div>
-        <div class="flex-1">
-          <div class="flex justify-between mb-2 text-sm font-medium">
-            <div class="left-label text-left" v-text="$t('ecology')" />
-            <div class="right-label text-right" v-text="$t('production')" />
-          </div>
-          <div class="flex h-8 bg-gray-200 rounded overflow-hidden">
-            <div
-              id="eAxisNeg"
-              class="axisEcology h-full flex items-center justify-start text-white font-medium text-sm"
-            >
-              <span id="eAxisNegText"></span>
-            </div>
-            <div
-              id="eAxisMid"
-              class="axisNeutral h-full flex items-center justify-center text-gray-700 font-medium text-sm"
-            >
-              <span id="eAxisMidText"></span>
-            </div>
-            <div
-              id="eAxisPos"
-              class="axisProductivism h-full flex items-center justify-end text-white font-medium text-sm"
-            >
-              <span id="eAxisPosText"></span>
-            </div>
-          </div>
-        </div>
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/production.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-      </div>
-
-      <div class="flex items-center gap-4 p-4">
-        <div class="w-16 h-16 flex-shrink-0">
-          <img
-            src="/images/revolution.png"
-            class="w-full h-full object-contain"
-          />
-        </div>
-        <div class="flex-1">
-          <div class="flex justify-between mb-2 text-sm font-medium">
-            <div class="left-label text-left" v-text="$t('revolution')" />
-            <div class="right-label text-right" v-text="$t('reform')" />
-          </div>
-          <div class="flex h-8 bg-gray-200 rounded overflow-hidden">
-            <div
-              id="tAxisNeg"
-              class="axisRevo h-full flex items-center justify-start text-white font-medium text-sm"
-            >
-              <span id="tAxisNegText"></span>
-            </div>
-            <div
-              id="tAxisMid"
-              class="axisNeutral h-full flex items-center justify-center text-gray-700 font-medium text-sm"
-            >
-              <span id="tAxisMidText"></span>
-            </div>
-            <div
-              id="tAxisPos"
-              class="axisRefo h-full flex items-center justify-end text-white font-medium text-sm"
-            >
-              <span id="tAxisPosText"></span>
-            </div>
-          </div>
-        </div>
-        <div class="w-16 h-16 flex-shrink-0">
-          <img src="/images/reform.png" class="w-full h-full object-contain" />
-        </div>
-      </div>
-    </div>
-  </div>
-
   <div id="bonusBox" class="max-w-4xl mx-auto mt-12 space-y-6">
-    <h3 v-text="$t('bonus_chars')" />
+    <h3 v-text="$t('bonus_chars')" class="text-2xl font-bold" />
 
     <div id="anarBonus" class="flex items-start gap-4 p-4">
-      <div class="flex-shrink-0 w-16 h-16 p-1">
+      <div class="flex-shrink-0 w-32 h-32 p-1">
         <img
           src="/images/anarchism.png"
           alt=""
@@ -424,15 +90,15 @@
       </div>
       <div class="flex-1">
         <h4
-          class="text-lg font-semibold text-gray-800 mb-1"
+          class="text-lg font-semibold text-gray-300 mb-1"
           v-text="$t('anarchist')"
         />
-        <p class="text-gray-600 text-sm" v-text="$t('anarchist_desc')" />
+        <p class="text-gray-400 text-sm" v-text="$t('anarchist_desc')" />
       </div>
     </div>
 
     <div id="pragBonus" class="flex items-start gap-4 p-4">
-      <div class="flex-shrink-0 w-16 h-16 p-1">
+      <div class="flex-shrink-0 w-32 h-32 p-1">
         <img
           src="/images/pragmatism.png"
           alt=""
@@ -441,15 +107,15 @@
       </div>
       <div class="flex-1">
         <h4
-          class="text-lg font-semibold text-gray-800 mb-1"
+          class="text-lg font-semibold text-gray-300 mb-1"
           v-text="$t('pragmatist')"
         />
-        <p class="text-gray-600 text-sm" v-text="$t('pragmatist_desc')" />
+        <p class="text-gray-400 text-sm" v-text="$t('pragmatist_desc')" />
       </div>
     </div>
 
     <div id="femiBonus" class="flex items-start gap-4 p-4">
-      <div class="flex-shrink-0 w-16 h-16 p-1">
+      <div class="flex-shrink-0 w-32 h-32 p-1">
         <img
           src="/images/feminism.png"
           alt=""
@@ -458,15 +124,15 @@
       </div>
       <div class="flex-1">
         <h4
-          class="text-lg font-semibold text-gray-800 mb-1"
+          class="text-lg font-semibold text-gray-300 mb-1"
           v-text="$t('feminist')"
         />
-        <p class="text-gray-600 text-sm" v-text="$t('feminist_desc')" />
+        <p class="text-gray-400 text-sm" v-text="$t('feminist_desc')" />
       </div>
     </div>
 
     <div id="compBonus" class="flex items-start gap-4 p-4">
-      <div class="flex-shrink-0 w-16 h-16 p-1">
+      <div class="flex-shrink-0 w-32 h-32 p-1">
         <img
           src="/images/complotism.png"
           alt=""
@@ -475,15 +141,15 @@
       </div>
       <div class="flex-1">
         <h4
-          class="text-lg font-semibold text-gray-800 mb-1"
+          class="text-lg font-semibold text-gray-300 mb-1"
           v-text="$t('conspiracist')"
         />
-        <p class="text-gray-600 text-sm" v-text="$t('conspiracist_desc')" />
+        <p class="text-gray-400 text-sm" v-text="$t('conspiracist_desc')" />
       </div>
     </div>
 
     <div id="vegaBonus" class="flex items-start gap-4 p-4">
-      <div class="flex-shrink-0 w-16 h-16 p-1">
+      <div class="flex-shrink-0 w-32 h-32 p-1">
         <img
           src="/images/veganism.png"
           alt=""
@@ -492,15 +158,15 @@
       </div>
       <div class="flex-1">
         <h4
-          class="text-lg font-semibold text-gray-800 mb-1"
+          class="text-lg font-semibold text-gray-300 mb-1"
           v-text="$t('vegan')"
         />
-        <p class="text-gray-600 text-sm" v-text="$t('vegan_desc')" />
+        <p class="text-gray-400 text-sm" v-text="$t('vegan_desc')" />
       </div>
     </div>
 
     <div id="monaBonus" class="flex items-start gap-4 p-4">
-      <div class="flex-shrink-0 w-16 h-16 p-1">
+      <div class="flex-shrink-0 w-32 h-32 p-1">
         <img
           src="/images/monarchism.png"
           alt=""
@@ -509,15 +175,15 @@
       </div>
       <div class="flex-1">
         <h4
-          class="text-lg font-semibold text-gray-800 mb-1"
+          class="text-lg font-semibold text-gray-300 mb-1"
           v-text="$t('monarchist')"
         />
-        <p class="text-gray-600 text-sm" v-text="$t('monarchist_desc')" />
+        <p class="text-gray-400 text-sm" v-text="$t('monarchist_desc')" />
       </div>
     </div>
 
     <div id="reliBonus" class="flex items-start gap-4 p-4">
-      <div class="flex-shrink-0 w-16 h-16 p-1">
+      <div class="flex-shrink-0 w-32 h-32 p-1">
         <img
           src="/images/religion.png"
           alt=""
@@ -526,10 +192,10 @@
       </div>
       <div class="flex-1">
         <h4
-          class="text-lg font-semibold text-gray-800 mb-1"
+          class="text-lg font-semibold text-gray-300 mb-1"
           v-text="$t('missionary')"
         />
-        <p class="text-gray-600 text-sm" v-text="$t('missionary_desc')" />
+        <p class="text-gray-400 text-sm" v-text="$t('missionary_desc')" />
       </div>
     </div>
   </div>
@@ -539,6 +205,24 @@
 import { legacyAxisToAxis } from '@/utils/legacy/axes'
 
 const { t, locale } = useI18n()
+const url = useRequestURL()
+
+// Get the results URL based on locale
+function getResultsUrl() {
+  if (locale.value === 'fr') {
+    return url.href
+      .replace(url.hostname + '/politiscales', 'politiscales.fr')
+      .replace(url.hostname, 'politiscales.fr')
+      .replace('/fr/', '/')
+  } else {
+    return url.href
+      .replace(url.hostname + '/politiscales', 'politiscales.party')
+      .replace(url.hostname, 'politiscales.party')
+  }
+}
+
+const socialText = encodeURIComponent(t('share_text'))
+const socialUrl = encodeURIComponent(getResultsUrl())
 
 // Social share buttons configuration
 const socialButtons = [
@@ -547,11 +231,7 @@ const socialButtons = [
     bgClass: 'bg-blue-400',
     hoverClass: 'hover:bg-blue-500',
     textKey: 'twitter_share',
-    href: computed(() => {
-      const text = encodeURIComponent(t('share_text'))
-      const url = encodeURIComponent(getResultsUrl())
-      return `https://twitter.com/intent/tweet?text=${text}&url=${url}`
-    }),
+    href: `https://twitter.com/intent/tweet?text=${socialText}&url=${socialUrl}`,
     icon: 'twitter-filled'
   },
   {
@@ -559,28 +239,10 @@ const socialButtons = [
     bgClass: 'bg-orange-500',
     hoverClass: 'hover:bg-orange-600',
     textKey: 'reddit_share',
-    href: computed(() => {
-      const title = encodeURIComponent(t('share_text'))
-      const url = encodeURIComponent(getResultsUrl())
-      return `https://www.reddit.com/submit?title=${title}&url=${url}`
-    }),
+    href: `https://www.reddit.com/submit?title=${socialText}&url=${socialUrl}`,
     icon: 'reddit'
   }
 ]
-
-// Get the results URL based on locale
-function getResultsUrl() {
-  if (locale.value === 'fr') {
-    return location.href
-      .replace(window.location.hostname + '/politiscales', 'politiscales.fr')
-      .replace(window.location.hostname, 'politiscales.fr')
-      .replace('/fr/', '/')
-  } else {
-    return location.href
-      .replace(window.location.hostname + '/politiscales', 'politiscales.party')
-      .replace(window.location.hostname, 'politiscales.party')
-  }
-}
 
 // Copy link to clipboard
 function copyLinkToClipboard() {
@@ -680,11 +342,8 @@ function init_results() {
     left += negativeValue
     right += positiveValue
 
-    if (negativeValue > positiveValue) {
-      characteristics.push({ name: axes[i] + '0', value: negativeValue })
-    } else {
-      characteristics.push({ name: axes[i] + '1', value: positiveValue })
-    }
+    characteristics.push({ name: axes[i] + '0', value: negativeValue })
+    characteristics.push({ name: axes[i] + '1', value: positiveValue })
 
     axesValues[axes[i]] = positiveValue - negativeValue
   }
