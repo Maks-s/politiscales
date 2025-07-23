@@ -35,49 +35,49 @@ export default defineNuxtConfig({
       {
         code: 'fr',
         file: 'fr.json',
-        name: 'Français',
+        label: 'Français',
         emoji: '🇫🇷'
       },
       {
         code: 'en',
         file: 'en.json',
-        name: 'English',
+        label: 'English',
         emoji: '🇬🇧'
       },
       {
         code: 'de',
         file: 'de.json',
-        name: 'Deutsch',
+        label: 'Deutsch',
         emoji: '🇩🇪'
       },
       {
         code: 'es',
         file: 'es.json',
-        name: 'Español',
+        label: 'Español',
         emoji: '🇪🇸'
       },
       {
         code: 'zh',
         file: 'zh.json',
-        name: '中文',
+        label: '中文',
         emoji: '🇨🇳'
       },
       {
         code: 'ru',
         file: 'ru.json',
-        name: 'Русский',
+        label: 'Русский',
         emoji: '🇷🇺'
       },
       {
         code: 'it',
         file: 'it.json',
-        name: 'Italiano',
+        label: 'Italiano',
         emoji: '🇮🇹'
       },
       {
         code: 'ar',
         file: 'ar.json',
-        name: 'العربية',
+        label: 'العربية',
         emoji: '🇸🇦'
       }
     ],

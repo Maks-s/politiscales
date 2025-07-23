@@ -1,36 +1,39 @@
 <script lang="ts" setup>
-const { locale, locales } = useI18n()
+const { locale, locales, defaultLocale } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
-const availableLocales = computed(() => {
-  return locales.value.filter((i) => i.code !== locale.value)
-})
+interface Item {
+  label: string
+  emoji: string
+  code: (typeof locale)['value']
+}
 
-const items = computed(() => {
-  return availableLocales.value.map((i) => {
-    return {
-      label: i.name,
-      emoji: i.emoji,
-      value: i.code
-    }
-  })
-})
+function onSelectLanguage(item: Item) {
+  navigateTo(switchLocalePath(item.code), { replace: true })
+}
+
+const localesValues = locales.value as unknown as Item[]
+
+const availableLocales = computed(() =>
+  localesValues.filter((i) => i.code !== locale.value)
+)
+
+const defaultLocaleItem = localesValues.find((i) => i.code === defaultLocale)!
+const selectedItem = localesValues.find((i) => i.code === locale.value)
 
 const selected = ref({
-  label: locales.value.find((i) => i.code === locale.value)?.name,
-  emoji: locales.value.find((i) => i.code === locale.value)?.emoji,
-  value: locales.value.find((i) => i.code === locale.value)?.value
+  label: selectedItem?.label ?? defaultLocaleItem.label ?? '',
+  emoji: selectedItem?.emoji ?? defaultLocaleItem.emoji ?? '',
+  code: selectedItem?.code ?? defaultLocaleItem.code ?? 'en'
 })
 </script>
 
 <template>
   <USelectMenu
     v-model="selected"
-    :items="items"
+    :items="availableLocales"
     :search-input="false"
-    @update:model-value="
-      (to) => navigateTo(switchLocalePath(to.value), { replace: true })
-    "
+    @update:model-value="onSelectLanguage"
   >
     <template #leading="{ modelValue, ui }">
       <span v-if="modelValue?.emoji" class="size-5 text-center">

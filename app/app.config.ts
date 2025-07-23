@@ -10,7 +10,6 @@ export default defineAppConfig({
       strong_disagree: 'red'
     },
     icons: {
-      // @ts-expect-error
       light: 'i-line-md-sunny-loop',
       dark: 'i-line-md-moon-loop'
     }
