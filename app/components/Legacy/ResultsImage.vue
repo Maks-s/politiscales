@@ -205,7 +205,10 @@
 import { legacyAxisToAxis } from '@/utils/legacy/axes'
 
 const { t, locale } = useI18n()
+const { decodeResultsStr } = useSerializer()
 const url = useRequestURL()
+
+const results = decodeResultsStr(url.hash.slice(1) || '')
 
 // Get the results URL based on locale
 function getResultsUrl() {
@@ -418,6 +421,11 @@ function init_results() {
   /* USUAL FUNCTIONS */
 
   function getQueryVariable(variable) {
+    console.log(results, variable)
+    if (results !== null) {
+      return results[legacyAxisToAxis(variable)]
+    }
+
     const query = window.atob(window.location.search.substring(1))
     const vars = query.split('&')
     for (let i = 0; i < vars.length; i++) {
