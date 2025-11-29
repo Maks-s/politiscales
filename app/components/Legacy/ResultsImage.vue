@@ -651,7 +651,7 @@ function init_results() {
         flagSymbols[s0].cond[cond0].vmax
       )
       if (charVal0 > 0) {
-        const value = charVal0 * 1.5
+        let value = charVal0 * 1.5
         let transform0 = -1
         if (value > valueMax) {
           for (let k0 = 0; k0 < flagSymbols[s0].data.transforms.length; k0++) {

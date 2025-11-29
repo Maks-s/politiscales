@@ -6,10 +6,10 @@
     class="text-xl my-4 font-serif"
   >
     <template #x>
-      <span>{{ questionsState.currentQuestionIndex + 1 }}</span>
+      <span>{{ currentQuestionNumber }}</span>
     </template>
     <template #n>
-      {{ questionsIds.length }}
+      {{ totalQuestionCount }}
     </template>
   </i18n-t>
   <h2 class="text-2xl my-4 min-h-[3lh]">
@@ -58,7 +58,7 @@
     </UButton>
 
     <UButton
-      v-if="questionsState.currentQuestionIndex > 0"
+      v-if="currentQuestionNumber > 1"
       color="neutral"
       size="xl"
       @click="prevQuestion"
@@ -66,10 +66,10 @@
       {{ $t('prev_question') }}
     </UButton>
     <UButton
-      v-if="questionsState.currentQuestionIndex === 0"
+      v-if="currentQuestionNumber === 1"
       color="neutral"
       size="xl"
-      :to="isLegacy ? localePath('/legacy') : localePath('/')"
+      :to="props.legacy ? localePath('/legacy') : localePath('/')"
     >
       {{ $t('back_home') }}
     </UButton>
@@ -77,118 +77,27 @@
 </template>
 
 <script lang="ts" setup>
-import { axes, axesKeys } from '~/utils/legacy/axes'
+import {
+  axes as legacyAxes,
+  axesKeys as legacyAxesKeys
+} from '~/utils/legacy/axes'
 
-const { t } = useI18n()
-const { encodeResultsStr } = useSerializer()
-const questionsState = useQuestionsState()
+const props = defineProps<{
+  legacy?: boolean
+  questionsWeights: QuestionWeights
+}>()
+
 const localePath = useLocalePath()
-const route = useRoute()
-
-const isLegacy = route.path.includes('/legacy')
-const props = defineProps<{ questionsWeights: QuestionWeights }>()
-
-const currentQuestion = computed(() =>
-  t(
-    `questions.${questionsIds.value[questionsState.value.currentQuestionIndex]}`
-  )
+const {
+  currentQuestion,
+  currentQuestionNumber,
+  prevQuestion,
+  nextQuestion,
+  totalQuestionCount
+} = useQuestionsState(
+  props.legacy ? legacyAxes : {},
+  props.legacy ? legacyAxesKeys : [],
+  props.legacy ? 'legacy-results' : 'results',
+  props.questionsWeights
 )
-const currentQuestionId = computed(() => {
-  return questionsIds.value[questionsState.value.currentQuestionIndex]
-})
-
-const questionsIds = computed(() => {
-  return Object.keys(props.questionsWeights)
-})
-
-interface Score {
-  val: number
-  sum: number
-}
-
-const quizResults = computed<AxisValues>(() => {
-  // First calculate raw scores as before
-  const scores = axesKeys.reduce(
-    (acc, axis) => {
-      acc[axis] = { val: 0, sum: 0 }
-      return acc
-    },
-    {} as Record<string, Score>
-  )
-
-  Object.entries(questionsState.value.answers).forEach(
-    ([questionId, answerValue]) => {
-      if (answerValue > 0) {
-        props.questionsWeights[questionId]?.valuesYes.forEach((a) => {
-          ;(scores[a.axis] as Score).val += answerValue * a.value
-          ;(scores[a.axis] as Score).sum += Math.max(a.value, 0)
-        })
-      } else {
-        props.questionsWeights[questionId]?.valuesNo.forEach((a) => {
-          ;(scores[a.axis] as Score).val -= answerValue * a.value
-          ;(scores[a.axis] as Score).sum += Math.max(a.value, 0)
-        })
-      }
-    }
-  )
-
-  // Normalize paired axes
-  const pairedAxes: { [key: string]: string[] } = {}
-  axesKeys.forEach((axis) => {
-    const axe = axes[axis as keyof typeof axes]
-    if ('pair' in axe) {
-      if (!pairedAxes[axe.pair]) {
-        pairedAxes[axe.pair] = []
-      }
-      pairedAxes[axe.pair]!.push(axis)
-    }
-  })
-
-  // For each pair, ensure their sum doesn't exceed 100%
-  Object.values(pairedAxes).forEach((pair) => {
-    const [axis1, axis2] = pair as [string, string]
-    const value1 = (scores[axis1]!.val / scores[axis1]!.sum) * 100
-    const value2 = (scores[axis2]!.val / scores[axis2]!.sum) * 100
-
-    if (value1 + value2 > 100) {
-      const ratio = 100 / (value1 + value2)
-      scores[axis1]!.val *= ratio
-      scores[axis2]!.val *= ratio
-    }
-  })
-
-  // Convert to percentages
-  return Object.entries(scores).reduce((acc, [axis, score]) => {
-    acc[axis] = (score.val / score.sum) * 100
-    return acc
-  }, {} as AxisValues)
-})
-
-const prevQuestion = () => {
-  if (questionsState.value.currentQuestionIndex > 0) {
-    questionsState.value.currentQuestionIndex--
-  }
-}
-
-const nextQuestion = (mult: number) => {
-  if (!currentQuestionId.value) {
-    return
-  }
-  questionsState.value.answers[currentQuestionId.value] = mult
-  if (
-    questionsState.value.currentQuestionIndex ===
-    questionsIds.value.length - 1
-  ) {
-    navigateTo(
-      localePath({
-        name: isLegacy ? 'legacy-results' : 'results',
-        hash: `#${encodeResultsStr(quizResults.value)}`
-      })
-    )
-    questionsState.value.currentQuestionIndex = 0
-    questionsState.value.answers = {}
-  } else {
-    questionsState.value.currentQuestionIndex++
-  }
-}
 </script>
