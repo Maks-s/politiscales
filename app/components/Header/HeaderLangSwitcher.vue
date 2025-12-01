@@ -19,20 +19,16 @@
 </template>
 
 <script lang="ts" setup>
+import type { LocaleObject } from '@nuxtjs/i18n'
+
 const { locale, locales, defaultLocale } = useI18n()
 const switchLocalePath = useSwitchLocalePath()
 
-interface Item {
-  label: string
-  emoji: string
-  code: (typeof locale)['value']
-}
-
-function onSelectLanguage(item: Item) {
+function onSelectLanguage(item: LocaleObject) {
   navigateTo(switchLocalePath(item.code), { replace: true })
 }
 
-const localesValues = locales.value as unknown as Item[]
+const localesValues = locales.value
 
 const availableLocales = computed(() =>
   localesValues.filter((i) => i.code !== locale.value)
