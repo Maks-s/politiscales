@@ -250,26 +250,21 @@ const socialButtons = [
 // Copy link to clipboard
 function copyLinkToClipboard() {
   const resultsUrl = getResultsUrl()
-  navigator.clipboard
-    .writeText(resultsUrl)
-    .then(() => {
-      const button = document.getElementById('buttonLink')
-      if (button) {
-        const originalText = button.innerHTML
-        button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M20 6L9 17l-5-5"/></svg> ${t('copied')}`
-        button.classList.add('bg-green-600', 'hover:bg-green-700')
-        button.classList.remove('bg-blue-600', 'hover:bg-blue-700')
+  navigator.clipboard.writeText(resultsUrl).then(() => {
+    const button = document.getElementById('buttonLink')
+    if (button) {
+      const originalText = button.innerHTML
+      button.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="flex-shrink-0"><path d="M20 6L9 17l-5-5"/></svg> ${t('copied')}`
+      button.classList.add('bg-green-600', 'hover:bg-green-700')
+      button.classList.remove('bg-blue-600', 'hover:bg-blue-700')
 
-        setTimeout(() => {
-          button.innerHTML = originalText
-          button.classList.remove('bg-green-600', 'hover:bg-green-700')
-          button.classList.add('bg-blue-600', 'hover:bg-blue-700')
-        }, 2000)
-      }
-    })
-    .catch((err) => {
-      console.error('Failed to copy URL: ', err)
-    })
+      setTimeout(() => {
+        button.innerHTML = originalText
+        button.classList.remove('bg-green-600', 'hover:bg-green-700')
+        button.classList.add('bg-blue-600', 'hover:bg-blue-700')
+      }, 2000)
+    }
+  })
 }
 
 function init_results() {
@@ -421,7 +416,6 @@ function init_results() {
   /* USUAL FUNCTIONS */
 
   function getQueryVariable(variable) {
-    console.log(results, variable)
     if (results !== null) {
       return results[legacyAxisToAxis(variable)]
     }
