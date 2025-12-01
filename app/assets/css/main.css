@@ -6,7 +6,7 @@
 @import 'tailwindcss/utilities' layer(utilities);
 
 /* Then import "@nuxt/ui": */
-@import '@nuxt/ui-pro';
+@import '@nuxt/ui';
 
 @theme {
   --font-sans: 'Inter', 'sans-serif';
